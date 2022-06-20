@@ -18,7 +18,7 @@ function AnimalList() {
                     <h3>Animal info: </h3>
                     <p><b>Speaces: </b>{ animal.speaces }</p>
                     <p><b>Name: </b>{ animal.name }</p>
-                    <p><b>Date of birth: </b>{ animal.age }</p>
+                    <p><b>Date of birth: </b>{ animal.age !== '' ? animal.age : 'Unknown' }</p>
                 </li>
             )) }
         </ul>
