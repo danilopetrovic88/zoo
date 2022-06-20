@@ -10,15 +10,29 @@ function AnimalList() {
         { speaces: 'fish', name: 'Jonny', age: '' }
     ])
 
+    const handleClick = (e) => {
+        const animalToRemove = Number(e.target.parentNode.id);
+        const newAnimals = [];
+        
+        animals.map((animal,index) => {
+            if(index !== animalToRemove) {
+                newAnimals.push(animal)
+            }
+        })
+
+        setAnimals(newAnimals);
+    }
+
   return (
     <div>
         <ul>
             { animals.map((animal, index) => (
-                <li key={ index }>
+                <li key={ index } id={index}>
                     <h3>Animal info: </h3>
                     <p><b>Speaces: </b>{ animal.speaces }</p>
                     <p><b>Name: </b>{ animal.name }</p>
                     <p><b>Date of birth: </b>{ animal.age !== '' ? animal.age : 'Unknown' }</p>
+                    <button onClick={handleClick}>Remove</button>
                 </li>
             )) }
         </ul>
