@@ -23,6 +23,12 @@ function AnimalList() {
         setAnimals(newAnimals);
     }
 
+    const moveToTop = (e) => {
+        const newAnimals = [...animals.slice(e.target.parentNode.id), ...animals.slice(0, e.target.parentNode.id)]
+
+        setAnimals(newAnimals)
+    }
+
   return (
     <div>
         <ul>
@@ -33,6 +39,7 @@ function AnimalList() {
                     <p><b>Name: </b>{ animal.name }</p>
                     <p><b>Date of birth: </b>{ animal.age !== '' ? animal.age : 'Unknown' }</p>
                     <button onClick={handleClick}>Remove</button>
+                    <button onClick={moveToTop}>Move to top</button>
                 </li>
             )) }
         </ul>
