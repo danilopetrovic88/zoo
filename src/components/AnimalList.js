@@ -29,8 +29,27 @@ function AnimalList() {
         setAnimals(newAnimals)
     }
 
+    const addAnimal = (e) => {
+        e.preventDefault()
+        const speacesInput = e.target.speaces.value;
+        const nameInput = e.target.name.value;
+        const ageInput = e.target.age.value;
+
+        const newAnimals = [...animals, {speaces: speacesInput, name: nameInput, age: ageInput}]
+
+        setAnimals(newAnimals);
+    }
+
   return (
     <div>
+
+    <form onSubmit={addAnimal}>
+        <input type="text" placeholder='speaces' name='speaces' id='speaces' onChange={e => e.target.value} /><br/>
+        <input type="text" placeholder='name' name='name' id='name' onChange={e => e.target.value} /><br/>
+        <input type="date" placeholder='date of birth' id='age' onChange={e => e.target.value} /><br/>
+        <button>Add Animal</button>
+    </form>
+
         <ul>
             { animals.map((animal, index) => (
                 <li key={ index } id={index}>
